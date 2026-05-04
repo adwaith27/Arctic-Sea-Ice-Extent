@@ -1,0 +1,22 @@
+[project]
+name = "arctic-sea-ice-extent"
+version = "0.1.0"
+description = "Economic and climate modelling project linking Arctic sea ice extent with CO2 and CH4 concentrations."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ipykernel",
+    "jupyterlab",
+    "matplotlib",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "python-pptx",
+    "scikit-learn",
+    "scipy",
+    "seaborn",
+    "statsmodels",
+]
+
+[tool.uv]
+package = false
