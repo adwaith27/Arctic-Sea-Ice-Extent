@@ -17,10 +17,11 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SEA_ICE_FILE = ROOT / "Sea_Ice_Index_Monthly_Data_with_Statistics_G02135_v3.0.xlsx"
-GHG_FILE = ROOT / "CO2_CH4_conc(1983).xlsx"
+RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 FIGURE_DIR = ROOT / "outputs" / "figures"
+SEA_ICE_FILE = RAW_DIR / "Sea_Ice_Index_Monthly_Data_with_Statistics_G02135_v3.0.xlsx"
+GHG_FILE = RAW_DIR / "CO2_CH4_conc_1983.xlsx"
 
 START_DATE = "1983-07-01"
 FORECAST_STEPS = 12
@@ -125,12 +126,9 @@ def build_datasets() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def save_datasets(monthly: pd.DataFrame, melt_season: pd.DataFrame) -> None:
-    monthly.to_excel(PROCESSED_DIR / "sea_ice_ghg_monthly_from_1983_07.xlsx")
-    melt_season.to_excel(PROCESSED_DIR / "sea_ice_ghg_melt_season_jul_dec.xlsx")
-
-    monthly.reset_index().to_excel(ROOT / "SeaIce_CO2_CH4_Merged.xlsx", index=False)
-    monthly.to_excel(ROOT / "Transformed Data.xlsx")
-    melt_season.to_excel(ROOT / "Transformed Data - Melt Season.xlsx")
+    monthly.reset_index().to_excel(PROCESSED_DIR / "SeaIce_CO2_CH4_Merged.xlsx", index=False)
+    monthly.to_excel(PROCESSED_DIR / "Transformed Data.xlsx")
+    melt_season.to_excel(PROCESSED_DIR / "Transformed Data - Melt Season.xlsx")
 
 
 def save_figure(fig: plt.Figure, name: str) -> None:

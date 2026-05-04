@@ -6,6 +6,4 @@ __pycache__/
 *.py[cod]
 .DS_Store
 outputs/figures/*.png
-data/processed/*.csv
-data/processed/*.xlsx
 *.egg-info/
